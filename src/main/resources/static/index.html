@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<button id="reqBtn">모든 데이터 검색</button>
+	
+	<script>
+		
+		document.querySelector("#reqBtn").addEventListener("click", function(){
+			const xhttp = new XMLHttpRequest();
+			xhttp.onload = function(resData) { //응답 완료시 실행되는 영역
+				
+				console.log(resData);
+				console.log(this.responseText);
+				
+				document.querySelector("#dataView").innerHTML = this.responseText;
+			}
+			xhttp.open("GET", "deptall"); //모든 검색
+			xhttp.send();			
+		});
+		
+	</script>
+	
+	
+	<button class="reqBtn2">모든 데이터 검색1</button>
+	<button class="reqBtn2">모든 데이터 검색2</button>
+	
+	<script>
+		document.querySelector("#reqBtn").addEventListener( "click", function(){
+			//alert(1);
+			document.querySelectorAll(".reqBtn2")[1].innerHTML = "은영"; 
+		});
+	</script>
+	
+	<br><hr><br>
+	<div id="dataView"></div>
+	
+	<script>
+		/* 
+		querySelector() : 반환 데이터 단수
+							#, ., tag명 단 html 문서에 하나만 있는 것 검색 시 유용
+							index 의미 없음
+		querySelectorAll() : 반환 데이터 복수
+							list로 반환
+							index로 데이터 반환
+							
+		firstChild : 검색된 tag의 첫번째 포함된 자식, tag일수도, 일반 text일수도 있음
+		
+		*/ 
+		//console.log(document.querySelector("#reqBtn")); 
+		//console.log(document.querySelector(".reqBtn2")[0]); //undifined
+		//console.log(document.querySelectorAll(".reqBtn2")[1]);
+		
+		console.log(document.querySelector(".reqBtn2").firstChild.nodeValue);
+		console.log(document.querySelector(".reqBtn2").lastChild.nodeValue);
+		console.log(document.querySelector("#reqBtn").firstChild.nodeValue);
+		
+	</script>
+		
+		
+	
+</body>
+</html>
